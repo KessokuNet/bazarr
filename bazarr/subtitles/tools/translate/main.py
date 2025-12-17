@@ -79,14 +79,7 @@ def _handle_post_processing(video_path, subtitle_path, language_code2, forced, h
             
         # Calculate score from translator default_score setting (percentage)
         default_score_percentage = int(settings.translator.default_score or 50)
-        if media_type == 'series':
-            # Series max score is 360
-            percent_score = default_score_percentage
-            max_score = 360
-        else:
-            # Movies max score is 120
-            percent_score = default_score_percentage
-            max_score = 120
+        percent_score = default_score_percentage
         
         # Get language information
         language_code3 = alpha3_from_alpha2(language_code2)
@@ -179,7 +172,7 @@ def _handle_post_processing(video_path, subtitle_path, language_code2, forced, h
             pp_threshold = int(settings.general.postprocessing_threshold_movie)
         
         # Execute post-processing if threshold conditions are met
-        if not use_pp_threshold or (use_pp_threshold and percent_score < pp_threshold):
+        if not use_pp_threshold or percent_score < pp_threshold:
             logging.debug(f"BAZARR Using post-processing command for translated subtitle: {command}")
             postprocessing(command, video_path)
             set_chmod(subtitles_path=subtitle_path)
