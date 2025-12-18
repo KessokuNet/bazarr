@@ -1,6 +1,6 @@
 """Add overview column to table_episodes
 
-Revision ID: e8f9a1b2c3d4
+Revision ID: 2a86a941ecac_
 Revises: dc09994b7e65
 Create Date: 2025-12-18 12:00:00.000000
 
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from alembic import op
 
 # revision identifiers, used by Alembic.
-revision = "e8f9a1b2c3d4"
+revision = "2a86a941ecac"
 down_revision = "dc09994b7e65"
 branch_labels = None
 depends_on = None
