@@ -1,0 +1,18 @@
+ _                      _                     _
+| | _____ ___ ___  ___ | | ___   _ _ __   ___| |_
+| |/ / _ / __/ __|/ _ \| |/ | | | | '_ \ / _ | __|
+|   |  __\__ \__ | (_) |   <| |_| | | | |  __| |_
+|_|\_\___|___|___/\___/|_|\_\\__,_|_| |_|\___|\__|
+
+KessokuNet images - Internal Patchsets for the MMSI clan
+
+-------------------------------------------------------------
+
+This image has been modified for usage with KessokuNet services.
+For more information, please visit https://home.cappuchino.xyz
+
+DO NOT report issues for this image to the upstream projects - as we made changes that may not be present in their codebase.
+
+Some of these patches however may be contributed back to the upstream projects - stay tuned for those!
+
+--------------------------------------------------------------
