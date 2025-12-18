@@ -11,6 +11,7 @@ Thanks to the folks at OpenSubtitles for their logo that was an inspiration for 
 This is a soft-fork/patchset of Bazarr maintained by Cappy (me) that includes various fixes and improvements that I find useful for my own use-cases, namely:
 
 - Enabling post-script hooks on subtitle translations
+- Per-episode overview data, passed to Lingarr for subtitle translation
 - Full subtitle translations with Lingarr instead of content mode (WIP)
 - More context injection in subtitle translation through Lingarr
 - Other minor fixes and improvements
