@@ -35,6 +35,7 @@ from ..core.translator_utils import (
 
 logger = logging.getLogger(__name__)
 
+TRANSLATION_TIMEOUT = 10800  # 3 hours
 
 class LingarrTranslatorService:
     def __init__(
@@ -105,7 +106,7 @@ class LingarrTranslatorService:
             try:
                 subs.save(self.dest_srt_file)
                 add_translator_info(
-                    self.dest_srt_file, f"# Subtitles translated with Lingarr # "
+                    self.dest_srt_file, "# Subtitles translated with Lingarr # "
                 )
             except OSError:
                 logger.error(
@@ -206,7 +207,7 @@ class LingarrTranslatorService:
                 f"{settings.translator.lingarr_url}/api/translate/content",
                 json=payload,
                 headers={"Content-Type": "application/json"},
-                timeout=10800,
+                timeout=TRANSLATION_TIMEOUT,
             )
 
             if response.status_code == 200:
