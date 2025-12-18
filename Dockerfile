@@ -44,8 +44,8 @@ RUN mkdir -p /app/bazarr/bin && \
 RUN python3 -m venv /lsiopy && \
     pip install -U --no-cache-dir pip wheel && \
     pip install -U --no-cache-dir \
-        -r /app/bazarr/bin/requirements.txt \
-        -r /app/bazarr/bin/postgres-requirements.txt
+        -r /src/requirements.txt \
+        -r /src/postgres-requirements.txt
 
 # Finalize build
 RUN printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
