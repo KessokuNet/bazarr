@@ -1,10 +1,21 @@
-# bazarr
+# bazarr - Cappy's patchset
 
 Bazarr is a companion application to Sonarr and Radarr. It manages and downloads subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.
 
 Be aware that Bazarr doesn't scan disk to detect series and movies: It only takes care of the series and movies that are indexed in Sonarr and Radarr.
 
 Thanks to the folks at OpenSubtitles for their logo that was an inspiration for ours.
+
+## About this patchset
+
+This is a soft-fork/patchset of Bazarr maintained by Cappy (me) that includes various fixes and improvements that I find useful for my own use-cases, namely:
+
+- Enabling post-script hooks on subtitle translations
+- Full subtitle translations with Lingarr instead of content mode (WIP)
+- More context injection in subtitle translation through Lingarr
+- Other minor fixes and improvements
+
+Some of these patches may eventually be proposed upstream to the main Bazarr repository, but I cannot guarantee that all of them will be accepted.
 
 ## Support on Paypal
 

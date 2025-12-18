@@ -1,0 +1,20 @@
+services:
+  bazarr:
+    image: ghcr.io/korewachino/bazarr:master
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - "6767:6767"
+    volumes:
+      - /srv/media:/media
+      - /srv/downloads:/downloads
+      - bazarr_data:/config
+    restart: unless-stopped
+
+volumes:
+  bazarr_data:
