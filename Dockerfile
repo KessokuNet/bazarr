@@ -9,7 +9,7 @@ ARG BUILD_DATE
 ARG VERSION
 ARG BAZARR_VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="chbmb"
+LABEL maintainer="korewaChino"
 # hard set UTC in case the user does not define it
 ENV TZ="Etc/UTC"
 
