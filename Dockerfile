@@ -7,7 +7,7 @@ FROM ghcr.io/linuxserver/baseimage-alpine:3.22
 # set version label
 ARG BUILD_DATE
 ARG VERSION
-ARG BAZARR_VERSION="1.0.3-cappy"
+ARG BAZARR_VERSION="1.0.3-kessokunet"
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="korewaChino"
 # hard set UTC in case the user does not define it
