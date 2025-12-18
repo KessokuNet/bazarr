@@ -205,7 +205,7 @@ class LingarrTranslatorService:
                 f"{settings.translator.lingarr_url}/api/translate/content",
                 json=payload,
                 headers={"Content-Type": "application/json"},
-                timeout=1800,
+                timeout=10800,
             )
 
             if response.status_code == 200:
