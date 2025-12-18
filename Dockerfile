@@ -14,54 +14,54 @@ LABEL maintainer="chbmb"
 ENV TZ="Etc/UTC"
 
 COPY . /src
-RUN \
-  echo "**** install build packages ****" && \
-  apk add --no-cache --virtual=build-dependencies \
+
+# Install build packages
+RUN apk add --no-cache --virtual=build-dependencies \
     build-base \
     cargo \
     libffi-dev \
     libpq-dev \
     libxml2-dev \
     libxslt-dev \
-    python3-dev && \
-  echo "**** install packages ****" && \
-  apk add --no-cache \
+    python3-dev
+
+# Install runtime packages
+RUN apk add --no-cache \
     ffmpeg \
     libxml2 \
     libxslt \
     mediainfo \
-    python3 && \
-  echo "**** install bazarr ****" && \
-  mkdir -p \
-    /app/bazarr/bin && \
-  cp -r /src/bazarr/* /app/bazarr/bin/ && \
-  rm -Rf /app/bazarr/bin/bin && \
-  echo "UpdateMethod=docker\nBranch=master\nPackageVersion=${VERSION}\nPackageAuthor=linuxserver.io" > /app/bazarr/package_info && \
-  cp /src/postgres-requirements.txt /app/bazarr/bin/postgres-requirements.txt && \
-  echo "**** Install requirements ****" && \
-  python3 -m venv /lsiopy && \
-  pip install -U --no-cache-dir \
-    pip \
-    wheel && \
-  pip install -U --no-cache-dir --find-links https://wheel-index.linuxserver.io/alpine-3.22/ \
-    -r /app/bazarr/bin/requirements.txt \
-    -r /app/bazarr/bin/postgres-requirements.txt && \
-  printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
-  echo "**** clean up ****" && \
-  apk del --purge \
-    build-dependencies && \
-  rm -rf \
-    $HOME/.cache \
-    $HOME/.cargo \
-    /tmp/*
+    python3
 
-# add local files
+# Install Bazarr
+RUN mkdir -p /app/bazarr/bin && \
+    cp -av /src/bazarr/. /app/bazarr/bin/ && \
+    rm -Rf /app/bazarr/bin/bin && \
+    echo "UpdateMethod=docker\nBranch=master\nPackageVersion=${VERSION}\nPackageAuthor=linuxserver.io" > /app/bazarr/package_info && \
+    cp /src/postgres-requirements.txt /app/bazarr/bin/postgres-requirements.txt
+
+# Install Python requirements
+RUN python3 -m venv /lsiopy && \
+    pip install -U --no-cache-dir pip wheel && \
+    pip install -U --no-cache-dir \
+        -r /app/bazarr/bin/requirements.txt \
+        -r /app/bazarr/bin/postgres-requirements.txt
+
+# Finalize build
+RUN printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
+    apk del --purge build-dependencies && \
+    rm -rf \
+        $HOME/.cache \
+        $HOME/.cargo \
+        /tmp/*
+
+# Add local files
 COPY root/ /
 
-# add unrar
+# Add unrar
 COPY --from=unrar /usr/bin/unrar-alpine /usr/bin/unrar
 
-# ports and volumes
+# Ports and volumes
 EXPOSE 6767
 
 VOLUME /config
