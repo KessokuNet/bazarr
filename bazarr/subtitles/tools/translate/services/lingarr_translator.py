@@ -201,6 +201,7 @@ class LingarrTranslatorService:
                 f"BAZARR is sending {len(lines_payload)} lines to Lingarr with full media context"
             )
 
+            # todo: consider using the new SRT translate backend
             response = requests.post(
                 f"{settings.translator.lingarr_url}/api/translate/content",
                 json=payload,
