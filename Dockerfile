@@ -36,6 +36,7 @@ RUN apk add --no-cache \
 # Install Bazarr
 RUN mkdir -p /app/bazarr/bin && \
     cp -av /src/bazarr/. /app/bazarr/bin/ && \
+    cp /src/bazarr.py /app/bazarr/bin/bazarr.py && \
     rm -Rf /app/bazarr/bin/bin && \
     echo "UpdateMethod=docker\nBranch=master\nPackageVersion=${VERSION}\nPackageAuthor=linuxserver.io" > /app/bazarr/package_info && \
     cp /src/postgres-requirements.txt /app/bazarr/bin/postgres-requirements.txt
